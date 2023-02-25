@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>App</title>
+</head>
+
+<body>
+
+  <div class="main">
+    <h2>App</h2>
+    <div class="">
+      <p>Welcome to my application.</p>
+      <p>The application is a Thesis that aims to display and analyze a statistical description of the
+        projects funded by the European Union from 2004 to the end of 2020.</p>
+      <p>The application has implemented two ways of displaying these projects, either by name or by
+        the country of each project. The illustration includes tables and diagrams with the
+        corresponding data.</p>
+      <p>Ιf you have come back and you want to search for a project or a country, press the
+        <b>Search</b> button.
+      </p>
+
+    </div>
+
+
+    <div class="sidenav">
+      <a href="/">App</a>
+      <a href="/home">Home</a>
+      <a href="/search_projects">Search Projects</a>
+      <a href="/search_countries">Search Countries</a>
+      <a href="/Contact">Contact</a>
+    </div>
+    <div class="row">
+      <div class="column left">
+        <div class="Definitions">
+          <div class="Definitions">
+            <p>Definitions of quantities calculated</p><br>
+          </div>
+        </div><br><br>
+        <div id="Average">
+          <p>Average:</p>
+          <p>This function returns the arithmetic average of the data it operates on. If called on an empty
+            container of
+            data, it raises a StatisticsError.</p>
+        </div>
+
+        <div id="Median">
+          <p>Median:</p>
+          <p>For data of odd length, this returns the middle item; for that of even length, it returns the
+            average of
+            the two middle items.</p>
+        </div>
+
+
+        <div id="Harmonic_Mean">
+          <p>Harmonic Mean:</p>
+          <p>It is a measure of the center</p>
+        </div>
+
+        <div id="Median_Low">
+          <p>Median Low:</p>
+          <p>When the data is of an even length, this provides us the low median of the data. Otherwise, it
+            returns the
+            middle value.</p>
+        </div>
+
+
+        <div id="Median_High">
+          <p>Median High:</p>
+          <p>Like median_low, this returns the high median when the data is of an even length. Otherwise, it
+            returns the
+            middle value.</p>
+        </div>
+
+
+        <div id="Group">
+          <p>Group:</p>
+          <p>This function uses interpolation to return the median of grouped continuous data. This is the
+            50th
+            percentile.</p>
+        </div>
+
+
+        <div id="P_Variance">
+          <p>P Variance:</p>
+          <p>This returns the population variance of data. Use this to calculate variance from an entire
+            population.</p>
+        </div>
+
+
+        <div id="Pst_Dev">
+          <p>Pst dev:</p>
+          <p>This returns the population standard deviation. This is the square root of population variance.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <style>
+    body {
+      font-family: "Lato", sans-serif;
+    }
+
+    .sidenav {
+      height: 100%;
+      width: 260px;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color: #111;
+      overflow-x: hidden;
+      padding-top: 20px;
+    }
+
+    .sidenav a {
+      padding: 6px 8px 6px 16px;
+      text-decoration: none;
+      font-size: 25px;
+      color: #818181;
+      display: block;
+    }
+
+    .sidenav a:hover {
+      color: #f1f1f1;
+    }
+
+    .main {
+      margin-left: 360px;
+      /* Same as the width of the sidenav */
+      font-size: 28px;
+      /* Increased text to enable scrolling */
+      padding: 0px 10px;
+
+
+    }
+
+    @media screen and (max-height: 450px) {
+      .sidenav {
+        padding-top: 15px;
+      }
+
+      .sidenav a {
+        font-size: 18px;
+      }
+    }
+
+
+
+
+    #Average,
+    #Harmonic_Mean,
+    #Median_High,
+    #P_Variance,
+    #St_Dev {
+      border: rgb(79, 165, 83);
+      border-radius: 15px;
+      background-color: #009494a2;
+      width: 40%;
+      font-size: 60%;
+      padding: 10px 10px;
+      text-align: center;
+      margin: 4px 2px;
+      margin-left: 20%;
+      opacity: 0.8;
+      border-spacing: 0 15px;
+
+    }
+
+    #Median,
+    #Median_Low,
+    #Variance,
+    #Group,
+    #Variance,
+    #Dev,
+    #Pst_Dev {
+      border: rgb(79, 165, 83);
+      border-radius: 15px;
+      background-color: #777777a2;
+      width: 40%;
+      font-size: 60%;
+      padding: 10px 10px;
+      text-align: center;
+      margin: 4px 2px;
+      margin-left: 20%;
+      opacity: 0.8;
+      border-spacing: 0 15px;
+    }
+
+    .Definitions{
+      margin-top: 1%;
+      position: absolute;
+      width: 40%;
+    }
+  </style>
+
+
+</body>
+
+</html>

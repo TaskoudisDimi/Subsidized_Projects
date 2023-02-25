@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>App</title>
+</head>
+
+
+<body>
+
+  <div class="sidenav">
+    <a href="/">App</a>
+    <a href="/home">Home</a>
+    <a href="/search_projects">Search Projects</a>
+    <a href="/search_countries">Search Countries</a>
+    <a href="/Contact">Contact</a>
+  </div>
+
+
+  <section id="contact_body">
+    <h2>Contact</h2>
+    <div class="heading-line"></div>
+    {% block content %}
+    <!-- <div class="contact"></div> -->
+    <form action="{{ url_for('get_contact') }}" method=post>
+      <div>
+        <!-- name forms -->
+        <p id="name">
+          {{ form.name.label }} <br>
+          {{ form.name(placeholder='Your name') }}
+        </p>
+        <!-- email forms -->
+        <p id="email">
+          {{ form.email.label }} <br>
+          {{ form.email(placeholder='Your e-mail ...') }}
+        </p>
+        <!-- Subject of your request -->
+        <p id="subject">
+          {{ form.subject.label }}<br>
+          {{form.subject(placeholder='Your subject ...')}}
+        </p>
+        <!-- Content of your request -->
+        <p id="message">
+          {{ form.message.label }}<br>
+          {{ form.message(placeholder='Write your request ...') }}
+        </p>
+        <!-- Submit button -->
+        <p id="send">
+          <button id="send"><a href="/" class="btn-get-started animated fadeInUp">{{
+              form.submit}}</a></button>
+          <!-- <a href="/">{{ form.submit }}</a> -->
+        </p>
+      </div>
+    </form>
+    {% endblock %}
+  </section>
+
+  <style>
+    body {
+      font-family: "Lato", sans-serif;
+    }
+
+    .sidenav {
+      height: 100%;
+      width: 260px;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color: #111;
+      overflow-x: hidden;
+      padding-top: 20px;
+    }
+
+    .sidenav a {
+      padding: 6px 8px 6px 16px;
+      text-decoration: none;
+      font-size: 25px;
+      color: #818181;
+      display: block;
+    }
+
+    .sidenav a:hover {
+      color: #f1f1f1;
+    }
+
+    .main {
+      margin-left: 360px;
+      /* Same as the width of the sidenav */
+      font-size: 28px;
+      /* Increased text to enable scrolling */
+      padding: 0px 10px;
+    }
+
+    #contact_body {
+      margin-left: 360px;
+    }
+
+    @media screen and (max-height: 450px) {
+      .sidenav {
+        padding-top: 15px;
+      }
+
+      .sidenav a {
+        font-size: 18px;
+      }
+    }
+  </style>
+
+</body>
+
+</html>

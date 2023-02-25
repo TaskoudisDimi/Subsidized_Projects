@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>App</title>
+</head>
+
+<body>
+
+
+
+
+
+  <div class="sidenav">
+    <a href="/">App</a>
+    <a href="/home">Home</a>
+    <a href="/search_projects">Search Projects</a>
+    <a href="/search_countries">Search Countries</a>
+    <a href="/Contact">Contact</a>
+  </div>
+
+
+  <div class="description">
+
+    <p>
+      You can see more statistics about projects and countries. Also, you can come back in the
+      <a class="button" href="/search_projects">
+        <b>search projects</b>
+      </a> page.
+
+    </p>
+
+  </div>
+
+
+  <div class="row">
+    <div class="column" style="background-color:#aaa;">
+      <h2>
+        <a href="/Min_projects">Countries with the fewest projects</a>
+      </h2>
+    </div>
+    <div class="column" style="background-color:#bbb;">
+      <h2>
+        <a href="/Max_projects">Countries with the most projects</a>
+      </h2>
+      <center>
+
+        <table id="table">
+          {% for item in data %}
+          <table>
+            <tr>
+              <th> Name: </th>
+            </tr>
+            <tr>
+              <td> {{item[0]}}</td>
+            </tr>
+          </table>
+          {% endfor %}
+        </table>
+
+      </center>
+    </div>
+    <div class="column" style="background-color:#ccc;">
+      <h2>
+        <a href="/Max_money">Projects with > 1 billion &euro;</a>
+      </h2>
+    </div>
+    <div class="column" style="background-color:#ddd;">
+      <h2>
+        <a href="Min_money">Projects with < 1000 &euro;</a>
+      </h2>
+    </div>
+  </div>
+
+
+
+
+
+  <style>
+    .column {
+      float: left;
+      width: 12%;
+      margin-left: 13%;
+      margin-top: 5%;
+      border-radius: 10px;
+
+    }
+
+    body {
+      font-family: "Lato", sans-serif;
+    }
+
+    .sidenav {
+      height: 100%;
+      width: 260px;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color: #111;
+      overflow-x: hidden;
+      padding-top: 20px;
+    }
+
+    .sidenav a {
+      padding: 6px 8px 6px 16px;
+      text-decoration: none;
+      font-size: 25px;
+      color: #818181;
+      display: block;
+    }
+
+    .sidenav a:hover {
+      color: #f1f1f1;
+    }
+
+    .main {
+      margin-left: 360px;
+      /* Same as the width of the sidenav */
+      font-size: 28px;
+      /* Increased text to enable scrolling */
+      padding: 0px 10px;
+    }
+
+    @media screen and (max-height: 450px) {
+      .sidenav {
+        padding-top: 15px;
+      }
+
+      .sidenav a {
+        font-size: 18px;
+      }
+    }
+
+    .description {
+      margin-left: 11%;
+      position: absolute;
+      margin-top: 1%;
+      font-size: 20px;
+    }
+
+
+    /* Top button */
+    #myBtn {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      right: 30px;
+      z-index: 99;
+      font-size: 18px;
+      border: none;
+      outline: none;
+      background-color: #00c1c1;
+      color: white;
+      cursor: pointer;
+      width: 3%;
+      border-radius: 10px;
+    }
+
+    #myBtn:hover {
+      background-color: #555;
+    }
+
+
+    a:link {
+      text-decoration: none;
+    }
+
+    a:visited {
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: #4d4d4d;
+    }
+  </style>
+
+
+  <!-- Top button -->
+  <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+  <script>
+    //Get the button
+    var mybutton = document.getElementById("myBtn");
+
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function () { scrollFunction() };
+
+    function scrollFunction() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "none";
+      }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+  </script>
+</body>
+
+</html>

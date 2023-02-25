@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>App</title>
+</head>
+
+<body>
+
+  <div class="main">
+
+    <div class="sidenav">
+      <a href="/">App</a>
+      <a href="/home">Home</a>
+      <a href="/search_projects">Search Projects</a>
+      <a href="/search_countries">Search Countries</a>
+      <a href="/Contact">Contact</a>
+    </div>
+
+
+
+
+    <div class="description">
+      <p>On this page you can search for countries through the search bar. Copy the country name you want
+        when you click "All Countries" and paste it into the search bar or you can write the country name in the same bar.</p>
+    </div>
+
+    <form class="all_countries" method="GET" action="/All_Countries">
+      <button class="button">All Countries</button>
+    </form>
+
+
+
+
+    <form class="example" method="post" action="">
+      <input type="text" name="table_countries" placeholder="Search Countries and Press Enter" id="search_countries"
+        required>
+    </form>
+
+
+
+    <div class="column middle">
+      <div class="row">
+        <div class="container_table">
+          <div class="center2">
+            <div id="Table_header">
+              <p>Table of countries</p><br>
+            </div>
+          </div>
+        </div>
+
+        <table>
+          {% for item in data %}
+          <table>
+            <tr>
+              <th> Country: </th>
+              <th> Name: </th>
+              <th> Sector: </th>
+            </tr>
+            <tr>
+              <td> {{item[0]}}</td>
+              <td> {{item[1]}}</td>
+              <td>{{item[2]}}</td>
+            </tr>
+          </table>
+          {% endfor %}
+        </table>
+      </div>
+    </div>
+
+
+
+
+
+
+  </div>
+
+  <style>
+    body {
+      font-family: "Lato", sans-serif;
+    }
+
+    .sidenav {
+      height: 100%;
+      width: 260px;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color: #111;
+      overflow-x: hidden;
+      padding-top: 20px;
+    }
+
+    .sidenav a {
+      padding: 6px 8px 6px 16px;
+      text-decoration: none;
+      font-size: 25px;
+      color: #818181;
+      display: block;
+    }
+
+    .sidenav a:hover {
+      color: #f1f1f1;
+    }
+
+    .main {
+      margin-left: 360px;
+      /* Same as the width of the sidenav */
+      font-size: 28px;
+      /* Increased text to enable scrolling */
+      padding: 0px 10px;
+    }
+
+    @media screen and (max-height: 450px) {
+      .sidenav {
+        padding-top: 15px;
+      }
+
+      .sidenav a {
+        font-size: 18px;
+      }
+    }
+
+    /* Create three unequal columns that floats next to each other */
+    .column {
+      float: left;
+      padding: 5px;
+      height: 300px;
+      /* Should be removed. Only for demonstration */
+    }
+
+
+    .description {
+      margin-top: 2%;
+      margin-left: 10%;
+      position: relative;
+      table-layout: absolute;
+      font-size: 30px;
+    }
+
+
+    .middle {
+      width: 45%;
+      /* height: 30%; */
+      margin-left: 27%;
+      margin-top: -8%;
+    }
+
+
+    table {
+      margin-top: 2%;
+      /* border: 1px solid #5c8f78; */
+      background-color: #858585;
+      border-radius: 10px;
+      margin-left: -1%;
+      width: 90%;
+
+    }
+
+    tr,
+    th {
+      margin-top: 10%;
+      /* border: 1px solid #5c8f78; */
+      text-align: left;
+      padding: 8px;
+      border-radius: 10px;
+    }
+
+    tr:nth-child(even) {
+      border: 1px black;
+      border-radius: 10px;
+      background-color: #b6e6d2;
+    }
+
+
+    input[type=text] {
+      width: 20%;
+      margin-top: 6%;
+      margin-left: 35%;
+      box-sizing: border-box;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      font-size: 16px;
+      background-color: white;
+      background-position: 10px 10px;
+      background-repeat: no-repeat;
+      padding: 12px 20px 12px 40px;
+      -webkit-transition: width 0.4s ease-in-out;
+      transition: width 0.4s ease-in-out;
+
+    }
+
+    input[type=text]:focus {
+      width: 50%;
+    }
+
+
+    .center1 {
+      margin: 0;
+      position: absolute;
+      top: 70%;
+      left: 50%;
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+
+    }
+
+    .container_table {
+      height: 50px;
+      margin-top: 28%;
+      margin-left: 9%;
+      width: 60%;
+      position: relative;
+      background-color: rgb(177, 177, 177);
+      border-radius: 5px;
+    }
+
+    .center2 {
+      margin: 0;
+      position: absolute;
+      top: 70%;
+      left: 50%;
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+    }
+
+
+
+    /* Top button */
+    #myBtn {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      right: 30px;
+      z-index: 99;
+      font-size: 18px;
+      border: none;
+      outline: none;
+      background-color: #00c1c1;
+      color: white;
+      cursor: pointer;
+      width: 3%;
+      border-radius: 10px;
+    }
+
+    #myBtn:hover {
+      background-color: #555;
+    }
+
+    #parallax1 {
+      border: solid rgb(204, 204, 204);
+      background-color: rgb(204, 204, 204);
+
+    }
+
+    .all_countries .button {
+      background-color: rgb(177, 177, 177);
+      border: 1px solid #00c1c1;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      cursor: pointer;
+      margin-left: 10%;
+      margin-top: 2%;
+      position: absolute;
+    }
+
+    .all_countries .button:hover {
+      background-color: #00c1c1;
+    }
+  </style>
+
+
+  <!-- Top button -->
+  <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+  <script>
+    //Get the button
+    var mybutton = document.getElementById("myBtn");
+
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function () { scrollFunction() };
+
+    function scrollFunction() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "none";
+      }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+  </script>
+</body>
+
+</html>

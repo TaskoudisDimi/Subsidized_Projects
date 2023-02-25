@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+    <div class="sidenav">
+        <a href="/">App</a>
+        <a href="/home">Home</a>
+        <a href="/search_projects">Search Projects</a>
+        <a href="/search_countries">Search Countries</a>
+        <a href="/Contact">Contact</a>
+    </div>
+
+    <div class="description">
+        <p>On this page you can search for projects through the search bar. Copy the project name you want
+            when you click "All Projects" and paste it into the search bar on this page.</p>
+    </div>
+
+    <form class="all_projects" method="GET" action="/All_Projects">
+        <button class="button">All Projects</button>
+    </form>
+
+    <form class="More" method="GET" action="/More">
+        <button class="More">More Statistis</button>
+    </form>
+
+
+    <form class="search" method="post" action="">
+        <input type="text" name="table_projects" placeholder="Search Projects and Press Enter" id="search_projects"
+            required>
+    </form>
+
+
+    <div class="results">
+        <div class="center_results">
+            <p>Results</p>
+        </div>
+    </div>
+
+
+    <section class="projects">
+        <div class="column left">
+            <div class="row">
+                <div class="container_table">
+                    <div class="center2">
+                        <div id="Table_header">
+                            <p>Table of projects</p><br>
+                        </div>
+                    </div>
+                </div>
+<!--  -->
+                <table>
+                    {% for item in data %}
+                    <table>
+                        <tr>
+                            <th> Name: </th>
+                            <th> Amount: </th>
+                            <th> Date: </th>
+                        </tr>
+                        <tr>
+                            <td> {{item[0]}}</td>
+                            <td> {{item[1]}} &euro;</td>
+                            <td>{{item[2]}}</td>
+                        </tr>
+                    </table>
+                    {% endfor %}
+                </table>
+<!--  -->
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column middle">
+
+
+                <div id="Average">
+                    <p>Average: {{ avg }}</p>
+                </div>
+
+                <div id="Median">
+                    <p>Median: {{ median }}</p>
+                </div>
+
+
+                <div id="Harmonic_Mean">
+                    <p>Harmonic Mean: {{ harmonic_mean }}</p>
+                </div>
+
+
+                <div id="Median_Low">
+                    <p>Median Low: {{ low }}</p>
+                </div>
+
+
+                <div id="Median_High">
+                    <p>Median High: {{ high }}</p>
+                </div>
+
+
+                <div id="Group">
+                    <p>Group: {{ group }}</p>
+                </div>
+
+
+                <div id="P_Variance">
+                    <p>P Variance: {{ pvar }}</p>
+                </div>
+
+
+                <div id="Pst_Dev">
+                    <p>Pst dev: {{ pst_dev }}</p>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+
+    <div class="chart1">
+        <canvas id="mixed-chart"> </canvas>
+    </div>
+    <script>
+        var ctx3 = document.getElementById("mixed-chart");
+        var mixed = new Chart(ctx3, {
+            type: "bar",
+            data: {
+                labels: {{ labels | safe }},
+        datasets: [
+            {
+                label: "Data points",
+                data: {{ values | safe }},
+            type: "line",
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            fill: true,
+            lineTension: 0.9
+        },
+            {
+                label: "Data points",
+                data: {{ values | safe }},
+            type: "bar",
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            fill: true,
+            lineTension: 0.9
+        }
+        ]
+    },
+        options: {
+            plugins: {
+                title: {
+                    display: true,
+                        text: 'Mixed Chart',
+                            padding: {
+                        top: 10,
+                            bottom: 30
+                    }
+                }
+            }
+        }
+  })
+    </script>
+
+
+
+    <div class="chart2">
+        <canvas id="pie" width="400" height="100"> </canvas>
+    </div>
+    <script>
+        var ctx3 = document.getElementById("pie").getContext("2d");
+        var pie = new Chart(ctx3, {
+            type: "pie",
+            data: {
+                labels: {{ labels | safe }},
+        datasets: [
+            {
+                label: "Data points",
+                data: {{ data | safe }},
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            fill: true,
+            lineTension: 0.9
+        }
+        ]
+    },
+        options: {
+            plugins: {
+                title: {
+                    display: true,
+                        text: 'Pie Chart',
+                            padding: {
+                        top: 10,
+                            bottom: 30
+                    }
+                }
+            }
+        }
+  })
+    </script>
+
+
+
+
+
+
+
+
+
+    <!-- Top button -->
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+    <script>
+        //Get the button
+        var mybutton = document.getElementById("myBtn");
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function () { scrollFunction() };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
+
+
+    <style>
+        body {
+            font-family: "Lato", sans-serif;
+            /* background-color: rgb(167, 167, 167); */
+        }
+
+        .sidenav {
+            height: 100%;
+            width: 260px;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            padding-top: 20px;
+        }
+
+        .sidenav a {
+            padding: 6px 8px 6px 16px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+        }
+
+        .sidenav a:hover {
+            color: #f1f1f1;
+        }
+
+        .main {
+            margin-left: 360px;
+            /* Same as the width of the sidenav */
+            font-size: 28px;
+            /* Increased text to enable scrolling */
+            padding: 0px 10px;
+        }
+
+        @media screen and (max-height: 450px) {
+            .sidenav {
+                padding-top: 15px;
+            }
+
+            .sidenav a {
+                font-size: 18px;
+            }
+        }
+
+
+
+        .all_projects .button {
+            background-color: rgb(177, 177, 177);
+            border: 1px solid #00c1c1;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+            margin-left: 20%;
+            margin-top: 2%;
+            position: absolute;
+        }
+
+        .all_projects .button:hover {
+            background-color: #00c1c1;
+        }
+
+        .More .More {
+            background-color: rgb(177, 177, 177);
+            border: 1px solid #00c1c1;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+            margin-left: 20%;
+            margin-top: 6%;
+            position: absolute;
+        }
+
+        .More .More:hover {
+            background-color: #00c1c1;
+        }
+
+
+
+
+
+
+
+        .results {
+            height: 50px;
+            margin-top: 4%;
+            margin-left: 78%;
+            width: 100px;
+            position: absolute;
+            background-color: rgb(177, 177, 177);
+            border-radius: 5px;
+        }
+
+
+        .center_results {
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            
+        }
+
+        .container_table {
+            height: 50px;
+            margin-top: -5%;
+            margin-left: 57%;
+            width: 280px;
+            position: absolute;
+            background-color: rgb(177, 177, 177);
+            border-radius: 5px;
+        }
+
+        .center2 {
+            margin: 0;
+            position: absolute;
+            top: 70%;
+            left: 50%;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+
+
+
+
+        /* Top button */
+        #myBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            z-index: 99;
+            font-size: 18px;
+            border: none;
+            outline: none;
+            background-color: #00c1c1;
+            color: white;
+            cursor: pointer;
+            width: 3%;
+            border-radius: 10px;
+        }
+
+        #myBtn:hover {
+            background-color: #555;
+        }
+
+
+
+
+        /* Create three unequal columns that floats next to each other */
+        .column {
+            float: left;
+            padding: 5px;
+            height: 300px;
+        }
+
+
+
+
+        .middle {
+            width: 25%;
+            height: 50%;
+            margin-left: 69%;
+            margin-top: 1%;
+            position: absolute;
+
+
+        }
+
+        .left {
+            width: 40%;
+            margin-left: 10%;
+            margin-top: -1%;
+            position: absolute;
+        }
+
+
+        .row {
+            margin-top: 5%;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+
+            display: table;
+            clear: both;
+        }
+
+
+        /* --- heading --- */
+        .section-heading {
+            margin-top: 5%;
+        }
+
+        .section-heading h2 {
+            font-size: 30px;
+            text-transform: uppercase;
+        }
+
+        .section-heading .heading-line {
+            margin: 0 auto;
+            display: block;
+            height: 10px;
+            width: 80px;
+            background: #333;
+            margin-top: -10px;
+            margin-bottom: -20px;
+        }
+
+
+
+        #Average,
+        #Harmonic_Mean,
+        #Median_High,
+        #P_Variance,
+        #St_Dev {
+            border: rgb(79, 165, 83);
+            border-radius: 15px;
+            background-color: #009494a2;
+            width: 40%;
+            font-size: 100%;
+            padding: 10px 10px;
+            text-align: center;
+            margin: 4px 2px;
+            margin-left: 20%;
+            opacity: 0.8;
+            border-spacing: 0 15px;
+
+        }
+
+        #Median,
+        #Median_Low,
+        #Variance,
+        #Group,
+        #Variance,
+        #Dev,
+        #Pst_Dev {
+            border: rgb(79, 165, 83);
+            border-radius: 15px;
+            background-color: #777777a2;
+            width: 40%;
+            font-size: 100%;
+            padding: 10px 10px;
+            text-align: center;
+            margin: 4px 2px;
+            margin-left: 20%;
+            opacity: 0.8;
+            border-spacing: 0 15px;
+        }
+
+
+
+
+        #statistical {
+            margin-left: 2%;
+        }
+
+        .description {
+            margin-top: 2%;
+            margin-left: 20%;
+            position: relative;
+            table-layout: absolute;
+            font-size: 30px;
+        }
+
+        #paragraph {
+            margin-top: -10%;
+            margin-left: 1%;
+        }
+
+
+        table {
+            margin-top: 2%;
+            background-color: #858585;
+            border-radius: 10px;
+            margin-left: 30%;
+            width: 70%;
+            position: inherit;
+
+
+        }
+
+        tr,
+        th {
+            margin-top: 10%;
+            text-align: left;
+            padding: 8px;
+            border-radius: 10px;
+            position: inherit;
+        }
+
+        tr:nth-child(even) {
+            border: 1px black;
+            border-radius: 10px;
+            background-color: #b6e6d2;
+            position: inherit;
+        }
+
+
+
+        input[type=text] {
+            margin-left: 50%;
+            margin-top: 6%;
+            width: 15%;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            font-size: 16px;
+            background-color: white;
+            background-position: 10px 10px;
+            background-repeat: no-repeat;
+            padding: 12px 20px 12px 40px;
+            -webkit-transition: width 0.4s ease-in-out;
+            transition: width 0.4s ease-in-out;
+        }
+
+        input[type=text]:focus {
+            width: 20%;
+        }
+
+
+
+        .chart1 {
+            margin-top: 40%;
+            margin-left: 15%;
+            position: relative;
+            width: 40%;
+            table-layout: absolute;
+        }
+
+        .chart2 {
+            margin-top: -20%;
+            margin-left: 65%;
+            position: relative;
+            width: 25%;
+            table-layout: absolute;
+        }
+
+        .chart3 {
+            margin-top: -50%;
+            margin-left: 35%;
+            position: relative;
+            width: 25%;
+            table-layout: absolute;
+        }
+
+
+
+
+
+        button {
+            display: inline-block;
+            margin-bottom: 0;
+            margin-bottom: 10px;
+            padding: 6px 12px;
+            border: 1px solid transparent;
+            vertical-align: middle;
+            text-align: center;
+            white-space: nowrap;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 1.428571429;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            -o-user-select: none;
+            user-select: none;
+        }
+
+        button.navbar-toggle {
+            background: #2b2b2b;
+            border: none;
+            color: #fff;
+        }
+
+        .btn-theme,
+        .btn-theme:hover,
+        .btn-theme:focus {
+            color: #fff;
+        }
+
+        .btn-theme:hover {
+            background: transparent !important;
+            border-color: #999;
+            color: #999;
+        }
+    </style>
+
+</body>
+
+</html>

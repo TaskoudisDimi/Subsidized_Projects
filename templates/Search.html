@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Alstar - Bootstrap one page parallax template</title>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- css -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,300,700,800" rel="stylesheet"
+        media="screen">
+
+</head>
+
+<body>
+
+
+    <!-- intro area -->
+    <section id="intro">
+        <div class="intro-container">
+            <div id="introCarousel" class="carousel slide carousel-fade" data-ride="carousel">
+
+                <div class="carousel-inner" role="listbox">
+
+                    <!-- Slide 1 -->
+                    <div class="item active">
+
+                        <div class="carousel-container">
+                            <div class="carousel-content">
+                                <h2 class="animated fadeInDown">App</h2>
+                                <p class="animated fadeInUp">There are two types of searches you can do. You can search
+                                    European Union funded projects and the countries of these projects.</p>
+                                <p>The instructions searching the projects are as follows:
+                                <ul>
+                                    <li>Select a search type</li>
+                                    <li>Select to display all the projects or countries</li>
+                                    <li>Copy the name of the country or project</li>
+                                    <li>Return to the search, and paste in the search bar</li>
+                                </ul>
+                                </p>
+                                <div id="navbar">
+                                    <a href="/">Home</a>
+                                </div>
+                                <a href="/chart1" class="btn-get-started animated fadeInUp">Search Projects</a>
+                                <a href="/chart2" class="btn-get-started animated fadeInUp">Search Countries</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="credits">
+                        Designed by Despoina Taskoudi
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+    <style>
+        /* My code style */
+        #navbar {
+            background-color: #333;
+            position: fixed;
+            top: 0px;
+            width: 100%;
+            /* display: block; */
+            transition: top 0.3s;
+        }
+
+        #navbar a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: left;
+            padding: 15px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        #navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+
+
+        /* ================================
+General
+================================= */
+        body {
+            text-align: center;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 14px;
+            line-height: 1.6em;
+        }
+
+        h1 {
+            font-size: 36px;
+        }
+
+        h2 {
+            font-size: 32px;
+        }
+
+        h3 {
+            font-size: 28px;
+        }
+
+        h4 {
+            font-size: 24px;
+        }
+
+        h5 {
+            font-size: 20px;
+        }
+
+        h6 {
+            font-size: 18px;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .h1,
+        .h2,
+        .h3,
+        .h4,
+        .h5,
+        .h6 {
+            color: #3a3a3a;
+            font-weight: 700;
+            margin-bottom: 20px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+
+        .lead {
+            font-weight: 400;
+        }
+
+        button {
+            display: inline-block;
+            margin-bottom: 0;
+            margin-bottom: 10px;
+            padding: 6px 12px;
+            border: 1px solid transparent;
+            vertical-align: middle;
+            text-align: center;
+            white-space: nowrap;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 1.428571429;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            -o-user-select: none;
+            user-select: none;
+        }
+
+        button.navbar-toggle {
+            background: #2b2b2b;
+            border: none;
+            color: #fff;
+        }
+
+        .btn-theme,
+        .btn-theme:hover,
+        .btn-theme:focus {
+            color: #fff;
+        }
+
+        .btn-theme:hover {
+            background: transparent !important;
+            border-color: #999;
+            color: #999;
+        }
+
+
+        /* ================================
+margin, padding
+================================= */
+        .mar-top0 {
+            margin-top: 0;
+        }
+
+        .mar-top10 {
+            margin-top: 10px;
+        }
+
+        .mar-top20 {
+            margin-top: 20px;
+        }
+
+        .mar-top30 {
+            margin-top: 30px;
+        }
+
+        .mar-top40 {
+            margin-top: 40px;
+        }
+
+
+        /* ================================
+Home sections
+================================= */
+
+        .home-section {
+            width: 100%;
+            padding: 150px 0px 150px 0px;
+        }
+
+        /* --- heading --- */
+        .section-heading {
+            margin-bottom: 50px;
+        }
+
+        .section-heading h2 {
+            font-size: 38px;
+            text-transform: uppercase;
+        }
+
+        .section-heading .heading-line {
+            margin: 0 auto;
+            display: block;
+            height: 1px;
+            width: 80px;
+            background: #333;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+
+        /* --- section bg var --- */
+
+        .bg-white {
+            background: #fff;
+        }
+
+        .bg-gray {
+            background: #f8f8f8;
+        }
+
+        .bg-dark {
+            background: #575757;
+        }
+
+
+        /* --- section content general color --- */
+
+        .color-light h1,
+        .color-light h2,
+        .color-light h3,
+        .color-light h4,
+        .color-light h5,
+        .color-light h6 {
+            color: #fff;
+        }
+
+
+        .color-light p {
+            color: #eee;
+        }
+
+
+
+        /* Intro
+================================= */
+
+        #intro {
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.3);
+
+        }
+
+        #intro .item {
+            width: 100%;
+            height: 100vh;
+            margin: auto;
+        }
+
+        #intro .carousel-container {
+            -webkit-box-pack: center;
+            -webkit-justify-content: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+            align-items: center;
+            position: absolute;
+            bottom: 0%;
+            top: 30%;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+
+        #intro .btn-get-started {
+            font-family: "Raleway", sans-serif;
+            font-weight: 500;
+            font-size: 14px;
+            letter-spacing: 1px;
+            display: inline-block;
+            padding: 12px 32px;
+            border-radius: 3px;
+            transition: 0.5s;
+            line-height: 1;
+            margin: 10px;
+            color: #fff;
+            -webkit-animation-delay: 0.8s;
+            animation-delay: 0.8s;
+            border: 2px solid #00c1c1;
+        }
+
+        #intro .btn-get-started:hover {
+            background: #00c1c1;
+            color: #fff;
+            text-decoration: none;
+        }
+
+
+
+        /* ================================
+Footer
+================================= */
+        footer {
+            background: #00c1c1;
+            color: #fff;
+            padding: 20px 0 10px;
+        }
+
+        footer a {
+            color: #fff;
+        }
+
+        footer a:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        /* ================================
+more media queries
+================================= */
+
+        @media (max-width:768px) {
+
+            header {
+                padding-bottom: 50px;
+                min-height: 1000px;
+                height: 100%;
+            }
+
+            .navbar-nav {
+                float: left;
+                text-align: left;
+            }
+
+            .box-team,
+            .box-team img {
+                text-align: center;
+            }
+
+            .box-team img {
+                float: none;
+                margin: 0 auto;
+            }
+
+            .box-team {
+                margin-bottom: 30px;
+            }
+
+            .og-fullimg {
+                display: none;
+            }
+
+            .og-details {
+                float: none;
+                width: 100%;
+                padding: 0 40px;
+            }
+
+        }
+
+        @media (max-width:992px) {
+
+            .service.carousel .item h4,
+            .service.carousel .item p {
+                text-align: center;
+            }
+
+            .service p {
+                margin-bottom: 60px;
+            }
+
+            .og-expander {
+                background: transparent;
+
+            }
+
+            .og-details {
+                padding: 0 20px;
+            }
+
+        }
+
+        @media (max-width:480px) {
+
+            header .carousel-iphone,
+            .detail .screenshot {
+                width: 280px;
+            }
+
+            header .carousel,
+            .detail .screenshot img {
+                padding-top: 85px;
+                width: 245px;
+            }
+
+            .service .screenshot img {
+                margin-top: -12px;
+                padding-top: 0px;
+            }
+
+            header {
+                padding-top: 30px;
+                padding-bottom: 0px;
+            }
+
+            header h1 {
+                font-size: 70px;
+            }
+        }
+    </style>
+</body>
+
+</html>
