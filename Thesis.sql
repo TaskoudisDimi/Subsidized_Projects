@@ -12,11 +12,6 @@ CREATE TABLE table_countries(
     Name varchar(500) NOT NULL,
     Sector varchar(500) NOT NULL
 );
-	
--- DROP TABLE table_countries;
-
-SELECT * FROM Thesis.table_countries;
-
 
 
 use Thesis;
@@ -27,25 +22,35 @@ CREATE TABLE table_projects(
     Amount int not null
 );
 
+-- load data from the files (.csv)
+LOAD DATA LOCAL INFILE 'C:/<PATH TO YOUR FILE>/concerts-2023.csv' 
+INTO TABLE concerts2 
+FIELDS TERMINATED BY ',' 
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS (`Date`,`Band`,`ConcertName`,`Country`,`City`,`Location`,`LocationAddress`);
+
+
+-- DROP TABLE table_countries;
+
+SELECT * FROM Thesis.table_countries;
+
 -- Drop table table_projects;	
+
 use Thesis;
 Select * From table_projects;
 
 -- Drop table table_countries;	
+
 use Thesis;
 Select * From table_countries;
 
 
-
-
-
-	
 use Thesis;
 Select * From table_projects;
 
 use Thesis;
 Select * From table_countries;
-
 
 
 -- Select countries with min frequency of projects 
@@ -74,9 +79,6 @@ inner join table_countries on table_projects.name = table_countries.name
 where Amount < 10000;
 
 
-
-
-
 -- use Thesis;
 -- Select * From despw_thesis.table_projects where Amount > 1000000000.0;
 -- Select * From despw_thesis.table_projects;
@@ -88,9 +90,4 @@ where Amount < 10000;
 
 -- use Thesis;
 -- SELECT Country, Name, Sector from table_countries;
-
-
-
-
-
 
