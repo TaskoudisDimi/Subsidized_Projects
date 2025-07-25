@@ -18,8 +18,8 @@ app.secret_key = 'My app'
 # Define details for connecting with db
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = '7741'
-app.config['MYSQL_DB'] = 'despw_thesis'
+app.config['MYSQL_PASSWORD'] = '6989272980D1mit4sk!@#$%'
+app.config['MYSQL_DB'] = 'Projects'
 
 
 mysql = MySQL(app)

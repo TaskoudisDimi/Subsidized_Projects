@@ -7,7 +7,7 @@ Show databases;
 
 use Thesis;
 CREATE TABLE table_countries(
-	id INT NOT NULL PRIMARY KEY auto_increment,
+	id INT NOT NULL PRIMARY KEY auto_increment, 
 	Country varchar(1000) NOT NULL,
     Name varchar(500) NOT NULL,
     Sector varchar(500) NOT NULL
